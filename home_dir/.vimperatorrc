@@ -1,0 +1,39 @@
+nnoremap    xT       :tabopenleft<SPACE>
+nnoremap    xt       :tabopenright<SPACE>
+
+nmap <A-a>      <C-6>
+
+:js <<EOF
+commands.addUserCommand
+    ( ["tabopenright", "tabnewright"]
+    , "Open one or more URLs in a new tab to the right"
+    , function (args)
+        { var origOrd = gBrowser.selectedTab._tPos;
+          commands.get("tabopen").action(args);
+          var newTab = tabs.getTab();
+          tabs.move(newTab, origOrd + 1);
+        }
+    , { bang        : commands.get("tabopen").bang
+      , completer   : commands.get("tabopen").completer
+      , literal     : commands.get("tabopen").literal
+      , privateData : commands.get("tabopen").privateData
+      }
+    , true
+    );
+commands.addUserCommand
+    ( ["tabopenleft", "tabnewleft"]
+    , "Open one or more URLs in a new tab to the left"
+    , function (args)
+        { var origOrd = gBrowser.selectedTab._tPos;
+          commands.get("tabopen").action(args);
+          var newTab = tabs.getTab();
+          tabs.move(newTab, origOrd + 0);
+        }
+    , { bang        : commands.get("tabopen").bang
+      , completer   : commands.get("tabopen").completer
+      , literal     : commands.get("tabopen").literal
+      , privateData : commands.get("tabopen").privateData
+      }
+    , true
+    );
+EOF
