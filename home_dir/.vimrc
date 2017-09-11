@@ -83,6 +83,21 @@ inoremap <S-Tab> <C-d>
 :colorscheme delek
 :hi Search cterm=NONE ctermfg=grey ctermbg=blue
 :hi SpellBad cterm=NONE ctermfg=grey ctermbg=blue
-
+" not working, should set the line colour
+":hi CursorLine     guibg=Yellow gui=none
+":hi CursorLine      cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+set cursorline
+autocmd InsertEnter * highlight CursorLine guibg=white guifg=white
+autocmd InsertLeave * highlight CursorLine guibg=yellow guifg=white
+" sets the colour of the current line to yellow
+:hi CursorLineNr   term=bold ctermfg=Yellow gui=bold guifg=Yellow
+" sets the colour of all the lines to magenta
+:hi LineNr         ctermfg=DarkMagenta guifg=#2b506e guibg=#000000
 
 autocmd Filetype * match Error /\s\+$/
+
+:setlocal foldmethod=indent
+:set foldlevelstart=20
+:nnoremap <space> za
+
+:set pastetoggle=<F3>
