@@ -1,9 +1,9 @@
 
 [user]
-	email = 
-	name = 
+    email =
+    name =
 [push]
-	default = current
+    default = current
 
 
 [alias]
@@ -14,6 +14,6 @@
     betterblame2 = log -p -M --ignore-space-at-eol --follow --stat --
 
 [core]
-	sparsecheckout = true
+    sparsecheckout = true
 [http]
-	sslverify = false
+    sslverify = false
