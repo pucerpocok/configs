@@ -110,3 +110,4 @@ autocmd Filetype * match Error /\s\+$/
 :nnoremap <space> za
 
 :set pastetoggle=<F3>
+:set tags=./tags;/
