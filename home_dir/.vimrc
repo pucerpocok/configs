@@ -1,3 +1,12 @@
+""""""""""""""""""""""""""""""
+"
+" install vundle with this command:
+"   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" plugin update with:
+"   :VundleUpdate
+"
+""""""""""""""""""""""""""""""
+
 " disable old vi stuff
 set nocompatible
 
