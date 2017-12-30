@@ -15,5 +15,9 @@
 
 [core]
     sparsecheckout = true
+    pager = less -r
+
+[color]
+    ui = true
 [http]
     sslverify = false

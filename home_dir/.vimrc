@@ -23,6 +23,15 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'dylanaraps/wal.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
+" has some problem: https://github.com/vim-syntastic/syntastic/issues/1391#issuecomment-97310854
+" Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 "#########################
 " examples
@@ -55,11 +64,12 @@ set t_Co=256
 
 " vim airline theme
 "let g:airline_theme='gardener'
-set guifont=Liberation\ Mono\ for\ Powerline\ 10
+" set guifont=Liberation\ Mono\ for\ Powerline\ 10
+" set guifont=Font\ Awesome\ 16
 "let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
-set fillchars+=stl:\ ,stlnc:\
+" set fillchars+=stl:\ ,stlnc:\
 let g:Powerline_mode_V="V·LINE"
 let g:Powerline_mode_cv="V·BLOCK"
 let g:Powerline_mode_S="S·LINE"
@@ -89,15 +99,19 @@ inoremap <S-Tab> <C-d>
 :set relativenumber
 :set so=10
 
-:colorscheme delek
+" :colorscheme delek
+" :colorscheme wal
 :hi Search cterm=NONE ctermfg=grey ctermbg=blue
 :hi SpellBad cterm=NONE ctermfg=grey ctermbg=blue
 " not working, should set the line colour
 ":hi CursorLine     guibg=Yellow gui=none
 ":hi CursorLine      cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-set cursorline
-autocmd InsertEnter * highlight CursorLine guibg=white guifg=white
-autocmd InsertLeave * highlight CursorLine guibg=yellow guifg=white
+" set cursorline
+map <F2> :set cursorline!<CR>
+":hi CursorLine      cterm=NONE
+
+" autocmd InsertEnter * highlight CursorLine guibg=white guifg=white
+" autocmd InsertLeave * highlight CursorLine guibg=yellow guifg=white
 " sets the colour of the current line to yellow
 :hi CursorLineNr   term=bold ctermfg=Yellow gui=bold guifg=Yellow
 " sets the colour of all the lines to magenta
@@ -111,3 +125,26 @@ autocmd Filetype * match Error /\s\+$/
 
 :set pastetoggle=<F3>
 :set tags=./tags;/
+:colorscheme wal
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let g:NERDTreeDirArrows=0
+let NERDTreeShowHidden=1
+autocmd VimEnter * NERDTree | wincmd p
+
+let g:deoplete#enable_at_startup = 1
+
+
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+
