@@ -8,6 +8,7 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-(wal -t -r &)
+(wal -t &)
+cat ~/.cache/wal/sequences
 
 #export PAGER=/usr/bin/vimcat

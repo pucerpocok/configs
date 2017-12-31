@@ -300,9 +300,15 @@ bindsym $mod+shift+o exec ~/Scripts/custom_exit.sh -reboot
 # pactl list short sinks
 # Pulse Audio controls
 # TODO: replace this with Scripts/pavolume.sh
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec ~/Scripts/pavolume.sh --up
+bindsym XF86AudioLowerVolume exec ~/Scripts/pavolume.sh --down
+bindsym XF86AudioMute exec ~/Scripts/pavolume.sh --togmute
+
+
+
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
@@ -326,7 +332,7 @@ exec_always xset s off
 exec_always xset -dpms
 exec_always xset s noblank
 
-exec_always compton -f
+#exec_always compton -f
 
 # set background
 exec_always --no-startup-id feh --bg-scale ~/.config/wall
