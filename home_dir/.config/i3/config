@@ -37,6 +37,7 @@ client.background       $bg
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+set $sup Mod1
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -71,6 +72,8 @@ bindsym $mod+b exec firefox
 # start ranger
 bindsym $mod+r exec urxvt -name ranger -e ranger
 #bindsym $mod+r exec termite -e ranger
+
+# TODO: shortcut to start virtual windows
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -180,6 +183,25 @@ bindsym $mod+Shift+8 move container to workspace $workplace8
 bindsym $mod+Shift+9 move container to workspace $workplace9
 bindsym $mod+Shift+0 move container to workspace $workplace10
 
+
+# move focused workspace to specific monitor
+bindsym $sup+Shift+Right move workspace to output right
+bindsym $sup+Shift+Left move workspace to output left
+bindsym $sup+Shift+Up move workspace to output up
+bindsym $sup+Shift+Down move workspace to output down
+
+bindsym $sup+Shift+l move workspace to output right
+bindsym $sup+Shift+h move workspace to output left
+bindsym $sup+Shift+k move workspace to output up
+bindsym $sup+Shift+j move workspace to output down
+
+# TODO: do not hardcode these monitor values
+bindsym $sup+1 move workspace to output DP2-2
+bindsym $sup+2 move workspace to output DP2-3
+bindsym $sup+3 move workspace to output eDP1
+
+
+
 # start programs on specific workspaces
 assign [class="Firefox"] $workplace1
 
@@ -192,6 +214,10 @@ assign [class="URxvt"] $workplace4
 
 assign [class="Slack"] $workplace5
 assign [class="Skype"] $workplace5
+
+
+
+assign [class="VirtualBox Machine"] $workplace9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -221,13 +247,51 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
+        # back to normal: Enter, Escape or q
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym q mode "default"
+}
+bindsym $mod+n mode "resize"
+
+mode "mouse" {
+        set $s 5
+        set $l 50
+
+        bindsym h exec --no-startup-id xdotool mousemove_relative -- -$s  0
+        bindsym j exec --no-startup-id xdotool mousemove_relative --  0   $s
+        bindsym k exec --no-startup-id xdotool mousemove_relative --  0  -$s
+        bindsym l exec --no-startup-id xdotool mousemove_relative --  $s  0
+
+        bindsym Shift+h exec --no-startup-id xdotool mousemove_relative -- -$l   0
+        bindsym Shift+j exec --no-startup-id xdotool mousemove_relative --  0    $l
+        bindsym Shift+k exec --no-startup-id xdotool mousemove_relative --  0   -$l
+        bindsym Shift+l exec --no-startup-id xdotool mousemove_relative --  $l   0
+
+        bindsym Left  exec --no-startup-id xdotool mousemove_relative -- -$s  0
+        bindsym Down  exec --no-startup-id xdotool mousemove_relative --  0   $s
+        bindsym Up    exec --no-startup-id xdotool mousemove_relative --  0  -$s
+        bindsym Right exec --no-startup-id xdotool mousemove_relative --  $s  0
+
+        bindsym Shift+Left  exec --no-startup-id xdotool mousemove_relative -- -$l   0
+        bindsym Shift+Down  exec --no-startup-id xdotool mousemove_relative --  0    $l
+        bindsym Shift+Up    exec --no-startup-id xdotool mousemove_relative --  0   -$l
+        bindsym Shift+Right exec --no-startup-id xdotool mousemove_relative --  $l   0
+
+        bindsym y exec --no-startup-id xdotool click 1 #left
+        bindsym u exec --no-startup-id xdotool click 2 #middle
+        bindsym i exec --no-startup-id xdotool click 3 #right
+        bindsym Shift+space exec --no-startup-id xdotool click --repeat 3 4 #wheel up
+        bindsym space exec --no-startup-id xdotool click --repeat 3 5 #wheel down
+
+
+        # back to normal: Enter, Escape or q
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym q mode "default"
 }
 
-# TODO: currently there is no resize option
-#bindsym $mod+r mode "resize"
+bindsym $mod+m mode "mouse"
 
 # window colors
 #                          border          background      text         indicator
