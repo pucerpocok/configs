@@ -1,7 +1,7 @@
 
-[user]
-    email =
-    name =
+#[user]
+#    email =
+#    name =
 [push]
     default = current
 
@@ -21,3 +21,6 @@
     ui = true
 [http]
     sslverify = false
+
+[init]
+    templatedir = ~/.git_scripts/templates
