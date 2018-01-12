@@ -196,9 +196,9 @@ bindsym $sup+Shift+k move workspace to output up
 bindsym $sup+Shift+j move workspace to output down
 
 # TODO: do not hardcode these monitor values
-bindsym $sup+1 move workspace to output DP2-2
-bindsym $sup+2 move workspace to output DP2-3
-bindsym $sup+3 move workspace to output eDP1
+bindsym $sup+1 move workspace to output DP-2-2
+bindsym $sup+2 move workspace to output DP-2-3
+bindsym $sup+3 move workspace to output eDP-1
 
 
 

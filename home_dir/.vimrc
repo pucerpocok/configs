@@ -130,6 +130,7 @@ autocmd Filetype * match Error /\s\+$/
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
+" let g:NERDTreeWinPos = "right"
 autocmd VimEnter * NERDTree | wincmd p
 
 let g:deoplete#enable_at_startup = 1

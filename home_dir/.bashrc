@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias sudo='sudo -E'
 PS1='[\u@\h \W]\$ '
 
 #(wal &)

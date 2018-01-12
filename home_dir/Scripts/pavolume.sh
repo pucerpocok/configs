@@ -158,7 +158,7 @@ function output() {
     if [ "${curStatus}" = 'yes' ]
     then
         # format output nicely
-        echo "%{F$foreground_alt}%{F-} muted"
+        echo "%{F$foreground_alt}%{F-} %{F#f00} muted%{F-}"
     else
         echo "%{F$foreground_alt}%{F-} $curVol%"
     fi

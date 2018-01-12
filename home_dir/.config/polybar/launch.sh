@@ -21,14 +21,15 @@ export POLY_WS_ICON_4="5;%{F$foreground_alt} %{F-} com"
 export POLY_WS_ICON_5="6;%{F$foreground_alt} %{F-} bit"
 export POLY_WS_ICON_6="7;%{F$foreground_alt} %{F-} rnd"
 export POLY_WS_ICON_7="8;%{F$foreground_alt} %{F-} rnd"
-export POLY_WS_ICON_8="9;%{F$foreground_alt} %{F-} rnd"
+export POLY_WS_ICON_8="9;%{F$foreground_alt} %{F-} win"
 
-MONITOR=eDP1 polybar laptop &
+monitors=`xrandr | grep connected | grep -v disconnected | cut -d ' ' -f 1`
 
-#if [ "$HOSTNAME" = ecly ]; then
-#    MONITOR=DVI-I-1 polybar main &
-#    MONITOR=HDMI-0 polybar secondary &
-#    MONITOR=DP-0 polybar secondary &
-#else
-#    MONITOR=eDP1 polybar laptop &
-#fi
+for monitor in $monitors; do
+    if [ "$monitor" = "eDP-1" ]; then
+        MONITOR=$monitor polybar laptop &
+    else
+        MONITOR=$monitor polybar secondary &
+    fi
+    #MONITOR=DP-2-3 polybar secondary &
+done

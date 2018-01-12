@@ -59,7 +59,7 @@ font-3 = "Noto Sans:size=14;2"
 
 modules-left = i3icons
 modules-center = date
-modules-right = vpncheck cpu pavolume keyboard
+modules-right = vpncheck cpu pavolume own_keyboard avg-battery
 
 ;fix tray position
 ;override-redirect = true
@@ -81,13 +81,16 @@ tray-position =
 
 [bar/laptop]
 inherit = bar/main
+;width = 50%
+;offset-x = 25%
+; override-redirect = true
 monitor = ${env:MONITOR}
 ; high res
 height = 40
 
 modules-left = i3icons
 modules-center = date
-modules-right = vpncheck cpu volume_percentage keyboard avg-battery
+modules-right = vpncheck cpu pavolume own_keyboard avg-battery
 
 font-0 = "Sans:pixelsize=16;2"
 font-1 = "FontAwesome:pixelsize=16;3"
@@ -272,6 +275,14 @@ format-prefix-foreground = ${colors.foreground-alt}
 format = <label-layout>
 format-foreground = ${colors.foreground}
 label = layout = %name%
+
+[module/own_keyboard]
+type = custom/script
+exec = sh ~/Scripts/set_keyboard.sh
+format-foreground = ${colors.foreground}
+click-left = sh ~/Scripts/set_keyboard.sh --toggle
+interval = 2
+
 
 [module/vpncheck]
 type = custom/script
