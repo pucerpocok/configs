@@ -29,6 +29,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'ryanoasis/vim-devicons'
 
 " has some problem: https://github.com/vim-syntastic/syntastic/issues/1391#issuecomment-97310854
 " Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -65,8 +66,9 @@ set t_Co=256
 " vim airline theme
 "let g:airline_theme='gardener'
 " set guifont=Liberation\ Mono\ for\ Powerline\ 10
-" set guifont=Font\ Awesome\ 16
-"let g:airline_powerline_fonts = 1
+set guifont=Font\ Awesome\ 16
+" set guifont=DroidSansMono\ Nerd\ Font\ 11
+let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
 set encoding=utf-8
 " set fillchars+=stl:\ ,stlnc:\
@@ -130,6 +132,7 @@ autocmd Filetype * match Error /\s\+$/
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc$', '\.swp$']
 " let g:NERDTreeWinPos = "right"
 autocmd VimEnter * NERDTree | wincmd p
 
