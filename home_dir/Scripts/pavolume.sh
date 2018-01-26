@@ -12,7 +12,7 @@ foreground_alt=$color2
 osd='no'
 inc='2'
 capvol='no'
-maxvol='100'
+maxvol='120'
 autosync='yes'
 
 # Muted status

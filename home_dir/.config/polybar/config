@@ -175,7 +175,18 @@ ws-icon-4 = ${env:POLY_WS_ICON_4}
 ws-icon-5 = ${env:POLY_WS_ICON_5}
 ws-icon-6 = ${env:POLY_WS_ICON_6}
 ws-icon-7 = ${env:POLY_WS_ICON_7}
-ws-icon-8 = ${env:POLY_WS_ICON_8} 
+ws-icon-8 = ${env:POLY_WS_ICON_8}
+ws-icon-9 = ${env:POLY_WS_ICON_9}
+ws-icon-10 = ${env:POLY_WS_ICON_10}
+ws-icon-11 = ${env:POLY_WS_ICON_11}
+ws-icon-12 = ${env:POLY_WS_ICON_12}
+ws-icon-13 = ${env:POLY_WS_ICON_13}
+ws-icon-14 = ${env:POLY_WS_ICON_14}
+ws-icon-15 = ${env:POLY_WS_ICON_15}
+ws-icon-16 = ${env:POLY_WS_ICON_16}
+ws-icon-17 = ${env:POLY_WS_ICON_17}
+ws-icon-18 = ${env:POLY_WS_ICON_18}
+ws-icon-19 = ${env:POLY_WS_ICON_19}
 ;ws-icon-default = 
 
 [module/cpu]
@@ -258,7 +269,7 @@ label-muted-foreground = ${colors.urgent}
 [module/pavolume]
 ; useful if machine is using multiple sinks
 type = custom/script
-interval = 2
+interval = 1
 label = %output%
 exec = sh ~/Scripts/pavolume.sh
 format-foreground = ${colors.foreground}

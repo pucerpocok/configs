@@ -65,6 +65,7 @@ floating_modifier $mod
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Return exec termite
+#bindsym $mod+Shift+Return exec termite && i3-msg "move container to workspace number 3"
 
 # start firefox
 bindsym $mod+b exec firefox
@@ -157,6 +158,15 @@ set $workplace7 "7"
 set $workplace8 "8"
 set $workplace9 "9"
 set $workplace10 "10"
+set $workplace11 "11"
+set $workplace12 "12"
+set $workplace13 "13"
+set $workplace14 "14"
+set $workplace15 "15"
+set $workplace16 "16"
+set $workplace17 "17"
+set $workplace18 "18"
+set $workplace19 "19"
 
 
 # switch to workspace
@@ -170,6 +180,15 @@ bindsym $mod+7 workspace $workplace7
 bindsym $mod+8 workspace $workplace8
 bindsym $mod+9 workspace $workplace9
 bindsym $mod+0 workspace $workplace10
+bindsym $sup+1 workspace $workplace11
+bindsym $sup+2 workspace $workplace12
+bindsym $sup+3 workspace $workplace13
+bindsym $sup+4 workspace $workplace14
+bindsym $sup+5 workspace $workplace15
+bindsym $sup+6 workspace $workplace16
+bindsym $sup+7 workspace $workplace17
+bindsym $sup+8 workspace $workplace18
+bindsym $sup+9 workspace $workplace19
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $workplace1
@@ -182,6 +201,15 @@ bindsym $mod+Shift+7 move container to workspace $workplace7
 bindsym $mod+Shift+8 move container to workspace $workplace8
 bindsym $mod+Shift+9 move container to workspace $workplace9
 bindsym $mod+Shift+0 move container to workspace $workplace10
+bindsym $sup+Shift+1 move container to workspace $workplace11
+bindsym $sup+Shift+2 move container to workspace $workplace12
+bindsym $sup+Shift+3 move container to workspace $workplace13
+bindsym $sup+Shift+4 move container to workspace $workplace14
+bindsym $sup+Shift+5 move container to workspace $workplace15
+bindsym $sup+Shift+6 move container to workspace $workplace16
+bindsym $sup+Shift+7 move container to workspace $workplace17
+bindsym $sup+Shift+8 move container to workspace $workplace18
+bindsym $sup+Shift+9 move container to workspace $workplace19
 
 
 # move focused workspace to specific monitor
@@ -196,9 +224,9 @@ bindsym $sup+Shift+k move workspace to output up
 bindsym $sup+Shift+j move workspace to output down
 
 # TODO: do not hardcode these monitor values
-bindsym $sup+1 move workspace to output DP-2-2
-bindsym $sup+2 move workspace to output DP-2-3
-bindsym $sup+3 move workspace to output eDP-1
+#bindsym $sup+1 move workspace to output DP-2-2
+#bindsym $sup+2 move workspace to output DP-2-3
+#bindsym $sup+3 move workspace to output eDP-1
 
 
 
@@ -215,7 +243,7 @@ assign [class="URxvt"] $workplace4
 assign [class="Slack"] $workplace5
 assign [class="Skype"] $workplace5
 
-
+assign [class="mpv"] $workplace7
 
 assign [class="VirtualBox Machine"] $workplace9
 
@@ -387,6 +415,13 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 #bindsym XF86AudioPause exec playerctl pause
 #bindsym XF86AudioNext exec playerctl next
 #bindsym XF86AudioPrev exec playerctl previous
+
+set $screenshot_name '%Y-%m-%d_%H:%M:%S_$wx$h.png'
+set $screenshot_folder '~/shots/'
+
+bindsym --release Print exec --no-startup-id scrot $screenshot_name -e 'mv $f $screenshot_folder'
+bindsym --release Shift+Print exec --no-startup-id scrot -s $screenshot_name -e 'mv $f $screenshot_folder'
+bindsym --release $mod+Shift+Print exec --no-startup-id scrot -u -d 4 $screenshot_name -e 'mv $f $screenshot_folder'
 
 # TODO: arandr for multiple monitors
 #
