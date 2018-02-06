@@ -62,11 +62,6 @@ set $mod Mod4
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec termite
-#bindsym $mod+Shift+Return exec termite && i3-msg "move container to workspace number 3"
-
 # start firefox
 bindsym $mod+b exec firefox
 
@@ -234,7 +229,7 @@ bindsym $sup+Shift+j move workspace to output down
 assign [class="Firefox"] $workplace1
 
 assign [class="UXTerm"] $workplace2
-assign [class="Termite"] $workplace2
+#assign [class="Termite"] $workplace2
 
 assign [class="Steam"] $workplace3
 
@@ -247,6 +242,15 @@ assign [class="mpv"] $workplace7
 
 assign [class="VirtualBox Machine"] $workplace9
 
+
+# start a terminal
+#bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec --no-startup-id i3-msg 'workspace 2; exec termite'
+bindsym $mod+Return exec termite
+#; move container to workspace $workplace2
+bindsym $mod+Shift+Return exec termite
+
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -257,6 +261,11 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec ~/Scripts/custom_exit.sh -logout
 
 # resize window (you can also use the mouse for that)
+
+bindsym $mod+y resize shrink width 10 px or 10 ppt
+bindsym $mod+u resize grow height 10 px or 10 ppt
+bindsym $mod+i resize shrink height 10 px or 10 ppt
+bindsym $mod+o resize grow width 10 px or 10 ppt
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 

@@ -7,7 +7,9 @@
 
 alias ls='ls --color=auto'
 alias sudo='sudo -E'
+alias cal='cal -m' #always start week with monday
 alias cd..="cd .." #work around a common typo
+alias ssh='TERM=xterm ssh'
 PS1='[\u@\h \W]\$ '
 
 #(wal &)

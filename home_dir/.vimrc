@@ -126,7 +126,15 @@ autocmd Filetype * match Error /\s\+$/
 :nnoremap <space> za
 
 :set pastetoggle=<F3>
+
 :set tags=./tags;/
+" Alt-right/left to navigate forward/backward in the tags stack
+:map <M-Left> <C-T>
+:map <M-Right> <C-]>
+:map <M-h> <C-T>
+:map <M-l> <C-]>
+":map <t> :! echo alma>/tmp/sdfsdf
+
 :colorscheme wal
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -134,7 +142,7 @@ let g:NERDTreeDirArrows=0
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.swp$']
 " let g:NERDTreeWinPos = "right"
-autocmd VimEnter * NERDTree | wincmd p
+autocmd VimEnter * NERDTreeFind | wincmd p
 
 let g:deoplete#enable_at_startup = 1
 
