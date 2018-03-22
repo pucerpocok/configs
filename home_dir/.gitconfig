@@ -7,8 +7,8 @@
 
 
 [alias]
-    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all --name-status
-    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all --name-status
+    lg1 = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an (%ae)%C(reset)%C(bold yellow)%d%C(reset)\n' --all --name-status
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an (%ae)%C(reset)\n' --all --name-status
     alias = config --get-regexp alias
     betterblame = log -p -M --follow --stat --
     betterblame2 = log -p -M --ignore-space-at-eol --follow --stat --
@@ -16,6 +16,7 @@
 [core]
     sparsecheckout = true
     #pager = less -r
+    excludesfile = ~/.gitignore
 
 [color]
     ui = true

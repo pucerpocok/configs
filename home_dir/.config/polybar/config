@@ -59,7 +59,7 @@ font-3 = "Noto Sans:size=14;2"
 
 modules-left = i3icons
 modules-center = date
-modules-right = vpncheck cpu pavolume own_keyboard avg-battery
+modules-right = current_window proxy vpncheck cpu pavolume own_keyboard avg-battery
 
 ;fix tray position
 ;override-redirect = true
@@ -90,7 +90,7 @@ height = 40
 
 modules-left = i3icons
 modules-center = date
-modules-right = vpncheck cpu pavolume own_keyboard avg-battery
+modules-right = current_window proxy vpncheck cpu pavolume own_keyboard avg-battery
 
 font-0 = "Sans:pixelsize=16;2"
 font-1 = "FontAwesome:pixelsize=16;3"
@@ -294,6 +294,17 @@ format-foreground = ${colors.foreground}
 click-left = sh ~/Scripts/set_keyboard.sh --toggle
 interval = 2
 
+[module/proxy]
+type = custom/script
+exec = sh ~/Scripts/proxy_set.sh
+format-foreground = ${colors.foreground}
+click-left = sh ~/Scripts/proxy_set.sh --toggle
+interval = 2
+
+[module/current_window]
+type = custom/script
+exec = sh ~/Scripts/current_window.sh
+interval = 1
 
 [module/vpncheck]
 type = custom/script

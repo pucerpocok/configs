@@ -26,9 +26,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dylanaraps/wal.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'roxma/vim-hug-neovim-rpc'
 Plugin 'ryanoasis/vim-devicons'
 
 " has some problem: https://github.com/vim-syntastic/syntastic/issues/1391#issuecomment-97310854
@@ -94,6 +95,20 @@ nnoremap <S-Tab> <<
 " for insert mode
 inoremap <S-Tab> <C-d>
 
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
+
+:map <silent> <A-y> <C-w><
+:map <silent> <A-u> <C-W>-
+:map <silent> <A-i> <C-W>+
+:map <silent> <A-o> <C-w>>
+
 " tab to spaces
 :set tabstop=4 shiftwidth=4 expandtab
 
@@ -120,6 +135,10 @@ map <F2> :set cursorline!<CR>
 :hi LineNr         ctermfg=DarkMagenta guifg=#2b506e guibg=#000000
 
 autocmd Filetype * match Error /\s\+$/
+autocmd FileType javascript setlocal equalprg=js-beautify\ --stdin
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.groovy set filetype=groovy
+autocmd BufNewFile,BufReadPost *.gvy set filetype=groovy
 
 :setlocal foldmethod=indent
 :set foldlevelstart=20
@@ -127,13 +146,35 @@ autocmd Filetype * match Error /\s\+$/
 
 :set pastetoggle=<F3>
 
+" Check .git/tags for ctags file.
+fun! FindTagsFileInGitDir(file)
+  let path = fnamemodify(a:file, ':p:h')
+  while path != '/'
+    let fname = path . '/.git/tags'
+    if filereadable(fname)
+      silent! exec 'set tags+=' . fname
+    endif
+    let path = fnamemodify(path, ':h')
+  endwhile
+endfun
+
+augroup CtagsGroup
+  autocmd!
+  autocmd BufRead * call FindTagsFileInGitDir(expand("<afile>"))
+augroup END
+
 :set tags=./tags;/
 " Alt-right/left to navigate forward/backward in the tags stack
-:map <M-Left> <C-T>
-:map <M-Right> <C-]>
-:map <M-h> <C-T>
-:map <M-l> <C-]>
+:map <A-Left> <C-T>
+:map <A-Right> <C-]>
+:map <A-h> <C-T>
+:map <A-l> <C-]>
 ":map <t> :! echo alma>/tmp/sdfsdf
+
+" shortcut to switch tab
+:map <A-s> <C-w><C-w>
+
+:nnoremap ; :q<return>
 
 :colorscheme wal
 
@@ -143,8 +184,18 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '\.swp$']
 " let g:NERDTreeWinPos = "right"
 autocmd VimEnter * NERDTreeFind | wincmd p
+let NERDTreeMouseMode=2
+set mouse=a
 
-let g:deoplete#enable_at_startup = 1
+map <C-n> :NERDTreeToggle<CR>
+
+:set colorcolumn=80
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
+"let g:deoplete#enable_at_startup = 1
 
 
 let g:NERDTreeIndicatorMapCustom = {

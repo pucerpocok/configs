@@ -10,6 +10,7 @@ alias sudo='sudo -E'
 alias cal='cal -m' #always start week with monday
 alias cd..="cd .." #work around a common typo
 alias ssh='TERM=xterm ssh'
+alias less='less -i'
 PS1='[\u@\h \W]\$ '
 
 #(wal &)
@@ -18,6 +19,7 @@ cat ~/.cache/wal/sequences
 PROMPT_COMMAND='. ~/.env'
 HISTSIZE=
 HISTFILESIZE=
+HISTCONTROL=ignoredups
 
 #export PAGER=/usr/bin/vimcat
 

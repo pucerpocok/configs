@@ -67,7 +67,7 @@ bindsym $mod+b exec firefox
 
 # start ranger
 bindsym $mod+r exec urxvt -name ranger -e ranger
-#bindsym $mod+r exec termite -e ranger
+#bindsym $mod+r exec termite -e "cat ~/.cache/wal/sequences && ranger"
 
 # TODO: shortcut to start virtual windows
 
@@ -238,10 +238,14 @@ assign [class="URxvt"] $workplace4
 assign [class="Slack"] $workplace5
 assign [class="Skype"] $workplace5
 
+assign [class="burp-StartBurp"] $workplace6
+
 assign [class="mpv"] $workplace7
 
 assign [class="VirtualBox Machine"] $workplace9
 
+#assign [class="Pidgin" window_role="conversation"] $workspace5
+#assign [class="Pidgin" window_role="buddy_list"] $workspac10
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
@@ -250,11 +254,13 @@ bindsym $mod+Return exec termite
 #; move container to workspace $workplace2
 bindsym $mod+Shift+Return exec termite
 
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
+# reload wal colorscheme, usually screen messes it up
+bindsym $sup+r exec --no-startup-id wal -n -i ~/.config/wall
 # exit i3 (logs you out of your X session)
 # TODO: replace with solution that does not use mouse (maybe rofi or dmenu)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
@@ -321,6 +327,8 @@ mode "mouse" {
         bindsym Shift+space exec --no-startup-id xdotool click --repeat 3 4 #wheel up
         bindsym space exec --no-startup-id xdotool click --repeat 3 5 #wheel down
 
+        bindsym b exec --no-startup-id xdotool mousedown 1 #left
+        bindsym n exec --no-startup-id xdotool mouseup 1 #left
 
         # back to normal: Enter, Escape or q
         bindsym Return mode "default"
