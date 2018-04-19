@@ -1,5 +1,10 @@
 #! /bin/bash
 
+exists=$(acpi -v 2>&1 1&>/dev/null)
+if [ "$?" -eq "127" ]; then
+    exit 0
+fi
+
 source "${HOME}/.cache/wal/colors.sh"
 foreground_alt=$color2
 #TODO: what is this xrdb? copied from polybar/config

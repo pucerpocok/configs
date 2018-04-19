@@ -158,6 +158,17 @@ fun! FindTagsFileInGitDir(file)
   endwhile
 endfun
 
+function! ToggleMouse()
+    " check if mouse is enabled
+    if &mouse == 'a'
+        " disable mouse
+        set mouse=
+    else
+        " enable mouse everywhere
+        set mouse=a
+    endif
+endfunc
+
 augroup CtagsGroup
   autocmd!
   autocmd BufRead * call FindTagsFileInGitDir(expand("<afile>"))
@@ -185,9 +196,10 @@ let NERDTreeIgnore=['\.pyc$', '\.swp$']
 " let g:NERDTreeWinPos = "right"
 autocmd VimEnter * NERDTreeFind | wincmd p
 let NERDTreeMouseMode=2
-set mouse=a
+"set mouse=a
 
 map <C-n> :NERDTreeToggle<CR>
+map <C-m> :call ToggleMouse()<CR>
 
 :set colorcolumn=80
 

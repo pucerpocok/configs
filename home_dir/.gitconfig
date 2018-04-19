@@ -25,3 +25,5 @@
 
 [init]
     templatedir = ~/.git_scripts/templates
+[diff]
+	tool = meld

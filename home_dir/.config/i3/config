@@ -232,6 +232,7 @@ assign [class="UXTerm"] $workplace2
 #assign [class="Termite"] $workplace2
 
 assign [class="Steam"] $workplace3
+assign [class="Meld"] $workplace3
 
 assign [class="URxvt"] $workplace4
 
