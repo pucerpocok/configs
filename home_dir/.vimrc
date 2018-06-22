@@ -90,6 +90,8 @@ let g:Powerline_mode_cs="S·BLOCK"
 " hungarian spellcheck
 ":map <F5> :setlocal spell! spelllang=hu_HU<CR>
 
+imap <F7> <c-g>u<Esc>[s1z=`]a<c-g>u
+
 " for command mode
 nnoremap <S-Tab> <<
 " for insert mode
