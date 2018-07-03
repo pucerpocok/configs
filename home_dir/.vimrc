@@ -117,6 +117,11 @@ set timeout ttimeoutlen=50
 :set number
 :set relativenumber
 :set so=10
+:map <F12> :call ToggleNumbers()<CR>
+function! ToggleNumbers()
+    let &relativenumber=1-&relativenumber
+    let &number=1-&number
+endfunc
 
 " :colorscheme delek
 " :colorscheme wal
@@ -203,7 +208,16 @@ let NERDTreeMouseMode=2
 map <C-n> :NERDTreeToggle<CR>
 map <C-m> :call ToggleMouse()<CR>
 
-:set colorcolumn=80
+
+set colorcolumn=80
+:map <F10> :call ToggleColumn()<CR>
+function! ToggleColumn()
+    if &colorcolumn == '80'
+        set colorcolumn=0
+    else
+        set colorcolumn=80
+    endif
+endfunc
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
