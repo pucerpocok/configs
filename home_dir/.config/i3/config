@@ -63,25 +63,27 @@ set $mod Mod4
 floating_modifier $mod
 
 # start firefox
-bindsym $mod+b exec firefox
+bindsym $mod+b exec --no-startup-id firefox
 
 # start ranger
-#bindsym $mod+r exec urxvt -name ranger -e ranger
-#bindsym $mod+r exec termite -e "cat ~/.cache/wal/sequences && ranger"
-bindsym $mod+r exec termite -e "bash -c \"~/Scripts/start_ranger.sh\""
+#bindsym $mod+r exec --no-startup-id urxvt -name ranger -e ranger
+#bindsym $mod+r exec --no-startup-id termite -e "cat ~/.cache/wal/sequences && ranger"
+bindsym $mod+r exec --no-startup-id termite -e "bash -c \"~/Scripts/start_ranger.sh\""
 
 # TODO: shortcut to start virtual windows
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
+#bindsym Control+q [class="Firefox"] nop
+
 # start dmenu (a program launcher)
 # TODO: opacity is not working, even when compton is running
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "70"
-bindsym $sup+d exec rofi -show run -lines 3 -eh 2 -opacity "70"
-#bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -opacity "70" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$bg" -hlfg "#9575cd"
-#bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$bg" -hlfg "#9575cd"
-#bindsym $mod+d exec dmenu_run -l 100 -nb black -nf lightgreen
+bindsym $mod+d exec --no-startup-id rofi -show run -lines 3 -eh 2 -opacity "70"
+bindsym $sup+d exec --no-startup-id rofi -show run -lines 3 -eh 2 -opacity "70"
+#bindsym $mod+d exec --no-startup-id rofi -show run -lines 3 -eh 2 -opacity "70" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$bg" -hlfg "#9575cd"
+#bindsym $mod+d exec --no-startup-id rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg" -bg "$bg" -fg "$fg" -hlbg "$bg" -hlfg "#9575cd"
+#bindsym $mod+d exec --no-startup-id dmenu_run -l 100 -nb black -nf lightgreen
 
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
@@ -123,7 +125,7 @@ bindsym $mod+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 # global fullscreen: across all monitors
-bindsym $mod+shift+f exec termite && sleep 1; fullscreen
+bindsym $mod+shift+f exec --no-startup-id termite && sleep 1; fullscreen
 #bindsym $mod+shift+f fullscreen toggle global
 
 # TODO: create bind for these
@@ -244,7 +246,7 @@ assign [class="URxvt"] $workplace4
 assign [class="Slack"] $workplace5
 assign [class="Skype"] $workplace5
 
-assign [class="burp-StartBurp"] $workplace6
+#assign [class="burp-StartBurp"] $workplace6
 
 assign [class="mpv"] $workplace7
 
@@ -254,12 +256,12 @@ assign [class="VirtualBox Machine"] $workplace9
 #assign [class="Pidgin" window_role="buddy_list"] $workspac10
 
 # start a terminal
-#bindsym $mod+Return exec i3-sensible-terminal
+#bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 #bindsym $mod+Return exec --no-startup-id i3-msg 'workspace 2; exec termite'
-bindsym $mod+Return exec termite
-#bindsym $sup+Return exec termite
+bindsym $mod+Return exec --no-startup-id termite
+#bindsym $sup+Return exec --no-startup-id termite
 #; move container to workspace $workplace2
-bindsym $mod+Shift+Return exec termite
+bindsym $mod+Shift+Return exec --no-startup-id termite
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -270,8 +272,8 @@ bindsym $mod+Shift+r restart
 bindsym $sup+r exec --no-startup-id wal -n -i ~/.config/wall
 # exit i3 (logs you out of your X session)
 # TODO: replace with solution that does not use mouse (maybe rofi or dmenu)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec ~/Scripts/custom_exit.sh -logout
+#bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id ~/Scripts/custom_exit.sh -logout
 
 # resize window (you can also use the mouse for that)
 
@@ -398,17 +400,17 @@ for_window [class="^.*"] border pixel 0
 set $term termite
 
 # lock machine
-#bindsym $mod+shift+x exec i3lock -i $lock_picture
-bindsym $mod+shift+x exec ~/Scripts/lock.sh
-bindsym $sup+shift+x exec ~/Scripts/lock2.sh
+#bindsym $mod+shift+x exec --no-startup-id i3lock -i $lock_picture
+bindsym $mod+shift+x exec --no-startup-id ~/Scripts/lock.sh
+bindsym $sup+shift+x exec --no-startup-id ~/Scripts/lock2.sh
 
 # shutdown, suspend and reboot
-bindsym $mod+shift+p exec ~/Scripts/lock.sh && sleep 1 && systemctl suspend
-#bindsym $sup+shift+p exec ~/Scripts/lock2.sh && sleep 1 && systemctl suspend
-#bindsym $mod+shift+p exec ~/Scripts/lock.sh && sleep 1 && systemctl hibernate
+bindsym $mod+shift+p exec --no-startup-id ~/Scripts/lock.sh && sleep 1 && systemctl suspend
+#bindsym $sup+shift+p exec --no-startup-id ~/Scripts/lock2.sh && sleep 1 && systemctl suspend
+#bindsym $mod+shift+p exec --no-startup-id ~/Scripts/lock.sh && sleep 1 && systemctl hibernate
 # TODO: have some notification before reboot and shutdown, maybe rofi/dmenu
-bindsym $mod+shift+u exec ~/Scripts/custom_exit.sh -shutdown
-bindsym $mod+shift+o exec ~/Scripts/custom_exit.sh -reboot
+bindsym $mod+shift+u exec --no-startup-id ~/Scripts/custom_exit.sh -shutdown
+bindsym $mod+shift+o exec --no-startup-id ~/Scripts/custom_exit.sh -reboot
 
 
 # get special keys with this command:
@@ -418,9 +420,9 @@ bindsym $mod+shift+o exec ~/Scripts/custom_exit.sh -reboot
 # pactl list short sinks
 # Pulse Audio controls
 # TODO: replace this with Scripts/pavolume.sh
-bindsym XF86AudioRaiseVolume exec ~/Scripts/pavolume.sh --up
-bindsym XF86AudioLowerVolume exec ~/Scripts/pavolume.sh --down
-bindsym XF86AudioMute exec ~/Scripts/pavolume.sh --togmute
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/Scripts/pavolume.sh --up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/Scripts/pavolume.sh --down
+bindsym XF86AudioMute exec --no-startup-id ~/Scripts/pavolume.sh --togmute
 
 
 
@@ -429,18 +431,18 @@ bindsym XF86AudioMute exec ~/Scripts/pavolume.sh --togmute
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
 
 # Touchpad controls
-#bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+#bindsym XF86TouchpadToggle exec --no-startup-id /some/path/toggletouchpad.sh # toggle touchpad
 
 # Media player controls
 # TODO: replace with mpd/mpc/ncmpcpp
-#bindsym XF86AudioPlay exec playerctl play
-#bindsym XF86AudioPause exec playerctl pause
-#bindsym XF86AudioNext exec playerctl next
-#bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86AudioPlay exec --no-startup-id playerctl play
+#bindsym XF86AudioPause exec --no-startup-id playerctl pause
+#bindsym XF86AudioNext exec --no-startup-id playerctl next
+#bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 set $screenshot_name '%Y-%m-%d_%H:%M:%S_$wx$h.png'
 set $screenshot_folder '~/shots/'
@@ -470,3 +472,4 @@ exec_always --no-startup-id feh --bg-scale ~/.config/wall
 # Modify sleep time from machine to machine
 exec_always --no-startup-id sleep 2; sh ~/Scripts/beautify.sh
 
+smart_gaps on

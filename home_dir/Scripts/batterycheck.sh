@@ -10,8 +10,9 @@ foreground_alt=$color2
 #TODO: what is this xrdb? copied from polybar/config
 avg_color=${xrdb:color2:#555}
 
+charging=$(acpi | grep "Charging")
 count=$(acpi -b | wc -l);
-sum=$(acpi -b | egrep -o '[0-9]{1,3}%' | tr -d '%' | xargs -I% echo -n '+%')
+sum=$(acpi -b | grep -E -o '[0-9]{1,3}%' | tr -d '%' | xargs -I% echo -n '+%')
 avg=$(( sum / count ))
 
 icon=
@@ -27,4 +28,8 @@ else
     icon=
 fi
 
-echo %{F$foreground_alt}$icon %{F$avg_color}$avg%
+if [ "$charging" != "" ]; then
+    icon="${icon}"
+fi
+
+echo -e "%{F$foreground_alt}$icon %{F$avg_color}$avg%"
