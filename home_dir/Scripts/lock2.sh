@@ -9,7 +9,7 @@
 
 #i3lock -i /tmp/lockpic.png
 
-pkill -u "$USER" -USR1 dunst
+sh ~/Scripts/notif.sh --off
 
 termite --title=own_screensaver -e "bash -c \"~/Scripts/start_aquarium.sh\"" &
 sleep 1
@@ -19,4 +19,4 @@ i3-msg [title="own_screensaver"] fullscreen global
 xtrlock
 i3-msg [title="own_screensaver"] kill
 
-pkill -u "$USER" -USR2 dunst
+sh ~/Scripts/notif.sh --on
