@@ -250,7 +250,7 @@ assign [class="Skype"] $workplace5
 
 assign [class="mpv"] $workplace7
 
-assign [class="VirtualBox Machine"] $workplace9
+#assign [class="VirtualBox Machine"] $workplace9
 
 #assign [class="Pidgin" window_role="conversation"] $workspace5
 #assign [class="Pidgin" window_role="buddy_list"] $workspac10

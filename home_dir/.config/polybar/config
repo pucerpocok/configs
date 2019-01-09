@@ -59,7 +59,7 @@ font-3 = "Noto Sans:size=14;2"
 
 modules-left = i3icons
 modules-center = date
-modules-right = current_window proxy vpncheck cpu pavolume own_keyboard avg-battery
+modules-right = current_window notification proxy vpncheck cpu pavolume own_keyboard avg-battery
 
 ;fix tray position
 ;override-redirect = true
@@ -81,30 +81,15 @@ tray-position =
 
 [bar/laptop]
 inherit = bar/main
-;width = 50%
-;offset-x = 25%
-; override-redirect = true
 monitor = ${env:MONITOR}
-; high res
 height = 40
-
-modules-left = i3icons
-modules-center = date
-modules-right = current_window proxy vpncheck cpu pavolume own_keyboard avg-battery
 
 font-0 = "Sans:pixelsize=16;2"
 font-1 = "FontAwesome:pixelsize=16;3"
 font-2 = "Inconsolata:pixelsize=16;1"
 font-3 = "Noto Sans:size=16;2"
 
-tray-detached = false
-tray-position = 
-tray-offset-x = 0
-tray-offset-y = 0
 tray-maxsize = 26
-tray-padding = 0
-tray-scale = 1
-tray-background = ${colors.background}
 
 [module/xwindow]
 type = internal/xwindow
@@ -299,6 +284,13 @@ type = custom/script
 exec = sh ~/Scripts/proxy_set.sh
 format-foreground = ${colors.foreground}
 click-left = sh ~/Scripts/proxy_set.sh --toggle
+interval = 2
+
+[module/notification]
+type = custom/script
+exec = sh ~/Scripts/notif.sh
+format-foreground = ${colors.foreground}
+click-left = sh ~/Scripts/notif.sh --toggle
 interval = 2
 
 [module/current_window]

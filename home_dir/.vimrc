@@ -33,6 +33,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'fatih/vim-go'
 Plugin 'MikeCoder/markdown-preview.vim'
+Plugin 'junegunn/vim-easy-align'
 
 " has some problem: https://github.com/vim-syntastic/syntastic/issues/1391#issuecomment-97310854
 " Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -270,3 +271,23 @@ inoremap <S-Tab> <C-d>
 :map <silent> <A-o> <C-w>>
 
 :map <F12> :call ToggleNumbers()<CR>
+
+"vnoremap // y/<C-R>"<CR>
+"vnoremap // y/\V<C-r>=escape(@",'/\')<CR><CR>
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)

@@ -11,6 +11,7 @@ alias cal='cal -m' #always start week with monday
 alias cd..="cd .." #work around a common typo
 alias ssh='TERM=xterm ssh'
 alias less='less -i'
+alias ag='ag --color'
 #PS1='\[\e[31m\]┌─[\[\e[37m\]\u@\t\[\e[31m\]] \n└─[\[\e[37m\]\W\[\e[31m\]]>\e[37m '
 PS1='[\u@\h \W]\$ '
 #GREEN="$(tput setaf 2)"
@@ -33,6 +34,7 @@ HISTCONTROL=ignoredups
 
 export EDITOR="vim"
 export GOPATH=~/.go
+export LESS=-R
 #PATH=$GOPATH/bin/:$PATH
 
 #export PAGER=/usr/bin/vimcat
