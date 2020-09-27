@@ -25,7 +25,14 @@ function unset_pr() {
 
 function output() {
     getcurr
-    echo "%{F$foreground_alt} %{F-}$curr"
+    case "$curr" in
+        on)
+            echo "%{F$foreground_alt} %{F-}$curr"
+            ;;
+        off)
+            echo "%{F$foreground_alt} %{F-}%{F#f00}$curr%{F-}"
+            ;;
+    esac
 }
 
 function getcurr() {

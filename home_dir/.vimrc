@@ -150,6 +150,18 @@ fun! FindTagsFileInGitDir(file)
   endwhile
 endfun
 
+fun! FindTagsFileInSvnDir(file)
+  let path = fnamemodify(a:file, ':p:h')
+  while path != '/'
+    "let fname = path . '/.svn/tags'
+    let fname = path . '/tags'
+    if filereadable(fname)
+      silent! exec 'set tags+=' . fname
+    endif
+    let path = fnamemodify(path, ':h')
+  endwhile
+endfun
+
 function! ToggleMouse()
     " check if mouse is enabled
     if &mouse == 'a'
@@ -164,6 +176,7 @@ endfunc
 augroup CtagsGroup
   autocmd!
   autocmd BufRead * call FindTagsFileInGitDir(expand("<afile>"))
+  autocmd BufRead * call FindTagsFileInSvnDir(expand("<afile>"))
 augroup END
 
 :set tags=./tags;.tags;/
@@ -291,3 +304,4 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+set modelineexpr

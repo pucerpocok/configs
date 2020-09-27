@@ -164,8 +164,27 @@ function output() {
     fi
 } #}}}
 
+function disp_help() {
+    echo "possible parameters:"
+    echo "    --help, -h: display this message"
+    echo "    --up: increse volume by ${inc}"
+    echo "    --down: decrese volume by ${inc}"
+    echo "    --mute"
+    echo "    --unmute"
+    echo "    --togmute: if current is mute then unmute and vica versa"
+    echo "    --sync"
+    echo "    --listen"
+    echo "any other or no parameter will display the current volume"
+}
+
 reloadSink
 case "$1" in
+    --help)
+        disp_help
+        ;;
+    -h)
+        disp_help
+        ;;
     --up)
         volUp
         ;;

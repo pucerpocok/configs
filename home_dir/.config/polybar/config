@@ -59,7 +59,7 @@ font-3 = "Noto Sans:size=14;2"
 
 modules-left = i3icons
 modules-center = date
-modules-right = current_window notification proxy vpncheck cpu pavolume own_keyboard avg-battery
+modules-right = current_window notification proxy vpncheck cpu memory pavolume own_keyboard avg-battery
 
 ;fix tray position
 ;override-redirect = true
@@ -184,6 +184,15 @@ format = <label>
 format-foreground = ${colors.foreground}
 
 label = %percentage%%
+
+[module/memory]
+type = internal/memory
+format-prefix = "mem "
+format-prefix-foreground = ${colors.foreground-alt}
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
 
 [module/mpd]
 type = internal/mpd

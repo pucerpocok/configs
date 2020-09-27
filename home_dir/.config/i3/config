@@ -333,7 +333,8 @@ mode "mouse" {
         bindsym y exec --no-startup-id xdotool click 1 #left
         bindsym u exec --no-startup-id xdotool click 2 #middle
         bindsym i exec --no-startup-id xdotool click 3 #right
-        bindsym Shift+space exec --no-startup-id xdotool click --repeat 3 4 #wheel up
+        #bindsym Shift+space exec --no-startup-id xdotool click --repeat 3 4 #wheel up
+        bindsym z exec --no-startup-id xdotool click --repeat 3 4 #wheel up
         bindsym space exec --no-startup-id xdotool click --repeat 3 5 #wheel down
         #bindsym Shift+m exec --no-startup-id xdotool click --repeat 3 4 #wheel up
         #bindsym m exec --no-startup-id xdotool click --repeat 3 5 #wheel down
@@ -402,7 +403,8 @@ set $term termite
 # lock machine
 #bindsym $mod+shift+x exec --no-startup-id i3lock -i $lock_picture
 bindsym $mod+shift+x exec --no-startup-id ~/Scripts/lock.sh
-bindsym $sup+shift+x exec --no-startup-id ~/Scripts/lock2.sh
+#bindsym $sup+shift+x exec --no-startup-id ~/Scripts/lock2.sh
+bindsym $sup+shift+x exec --no-startup-id ~/Scripts/lock.sh
 
 # shutdown, suspend and reboot
 bindsym $mod+shift+p exec --no-startup-id ~/Scripts/lock.sh && sleep 1 && systemctl suspend
